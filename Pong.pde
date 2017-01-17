@@ -1,7 +1,8 @@
 //import sound libary
 import processing.sound.*;
 SoundFile file;
-//Pong Clone v0.2
+//Pong Clone v0.44
+
 //by Kasper Kristensen 09-03-2016
 
 screen currentScreen;
@@ -32,10 +33,10 @@ void draw() {
   dt = thisTime/1000.0/2;
   
   currentScreen.update(dt);
-  
   //clear screen
   background(0);
-  stroke(255);
+  stroke(200);
+  
   
   currentScreen.draw();
 }
