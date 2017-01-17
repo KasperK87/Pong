@@ -24,10 +24,10 @@ void draw() {
   dt = thisTime/1000.0/2;
   
   currentScreen.update(dt);
-  
   //clear screen
   background(0);
   stroke(200);
+  
   
   currentScreen.draw();
 }
