@@ -47,12 +47,19 @@ public class ball extends gameObject  {
     
     if (y <= 0 || y >= 200) {
       velocity.y = -velocity.y;
+      //playing the mp3 file
+      file3.play();  
       return true;
     } 
+    
+           
     if (x <= 0 || x >= 300) {
       //GOAL!!!
       //velocity.x = -velocity.x; 
       //speed += 100;
+      
+       //playing the mp3 file
+      file2.play();
       
       pitchBall();
       
@@ -111,6 +118,8 @@ public class bat extends gameObject{
         entity.y-10/2 < this.y+this.h/2 && 
         entity.y+10/2 > this.y-this.h/2){
     
+          //playing the mp3 file
+      file4.play();
         return true;
     }
     return false;
