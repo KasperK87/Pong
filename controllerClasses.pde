@@ -65,9 +65,9 @@ public class aiController extends controller{
    
   public void update(float dt){
       if (ballPointer.y < actorPointer.y) {
-        actorPointer.y -= 60*dt;
+        actorPointer.y -= 300*dt;
       } else if (ballPointer.y > actorPointer.y) {
-        actorPointer.y += 60*dt;
+        actorPointer.y += 300*dt;
       }
    } 
 }

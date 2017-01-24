@@ -1,3 +1,15 @@
+//import sound libary
+import processing.sound.*;
+SoundFile file;
+
+//Pong Clone v0.45
+
+SoundFile file2;
+SoundFile file3;
+SoundFile file4;
+
+
+//Pong Clone v0.2
 //Pong Clone v0.44
 //by Kasper Kristensen 09-03-2016
 
@@ -17,6 +29,20 @@ void setup() {
   game2Instance = new game2();
   
   currentScreen = mainMenuInstance;
+  
+   //importing the sound file from the computer
+  file= new SoundFile(this, "Super Stardust HD lave music Theme.mp3");
+  //playing the mp3 file
+      file.play();
+      
+      //importing the sound file from the computer
+  file2= new SoundFile(this, "Lose.mp3");
+  
+   //importing the sound file from the computer
+  file3= new SoundFile(this, "Pan.mp3");
+  
+     //importing the sound file from the computer
+  file4= new SoundFile(this, "Light.mp3");
 }
 
 void draw() {
@@ -26,10 +52,10 @@ void draw() {
   dt = thisTime/1000.0/2;
   
   currentScreen.update(dt);
-  
   //clear screen
   background(0);
   stroke(200);
+  
   
   currentScreen.draw();
 }
