@@ -1,7 +1,7 @@
 //import sound libary
 import processing.sound.*;
 SoundFile file;
-//Pong Clone v0.44
+//Pong Clone v0.45
 
 //by Kasper Kristensen 09-03-2016
 
