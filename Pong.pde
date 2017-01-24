@@ -16,6 +16,7 @@ SoundFile file4;
 screen currentScreen;
 mainMenu mainMenuInstance;
 game gameInstance;
+game2 game2Instance;
 
 int lastTime;
 int thisTime;
@@ -25,6 +26,7 @@ void setup() {
   size(300,200);
   mainMenuInstance = new mainMenu();
   gameInstance = new game();
+  game2Instance = new game2();
   
   currentScreen = mainMenuInstance;
   
