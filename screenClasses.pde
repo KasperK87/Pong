@@ -1,7 +1,9 @@
 
 //int's to score system
-int player1 ; 
-int player2 ;
+int player1score; 
+int player2score;
+
+
 
 abstract class screen {
   abstract void update(float dt);
@@ -186,13 +188,28 @@ public class game extends screen {
     // newBall.velocity.y = (newBall.y-player2Bat.y)/50;
     // newBall.speed += 100; 
   }
+  //reads where the ball is for score
+   if (newBall.x <= 0) {
+       player2score++;
+     }
+     if (newBall.x >= width) {
+       player1score++;
+      }
+     
 }
   
   public void draw(){
     //rendering
     for (int i = 0; i < objects.size(); i++) {
       objects.get(i).draw();
-    } 
+    }
+    
+    //shows point
+    pushMatrix();
+    textSize(40);
+    fill(255);
+    text(player1score + " - " + player2score, width/2, 40);
+    popMatrix();
   }
 }
 public class game2 extends screen{
@@ -258,7 +275,7 @@ public class game2 extends screen{
     pushMatrix();
     textSize(40);
     fill(255);
-    text(player1 + " - " + player2, width/2, 40);
+    text(player1score + " - " + player2score, width/2, 40);
     popMatrix();
   }
 }
