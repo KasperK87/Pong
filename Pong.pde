@@ -1,4 +1,8 @@
+//import sound libary
+import processing.sound.*;
+SoundFile file;
 //Pong Clone v0.44
+
 //by Kasper Kristensen 09-03-2016
 
 screen currentScreen;
@@ -15,6 +19,11 @@ void setup() {
   gameInstance = new game();
   
   currentScreen = mainMenuInstance;
+  
+   //importing the sound file from the computer
+  file= new SoundFile(this, "Super Stardust HD lave music Theme.mp3");
+  //playing the mp3 file
+      file.play();
 }
 
 void draw() {
@@ -24,10 +33,10 @@ void draw() {
   dt = thisTime/1000.0/2;
   
   currentScreen.update(dt);
-  
   //clear screen
   background(0);
   stroke(200);
+  
   
   currentScreen.draw();
 }
