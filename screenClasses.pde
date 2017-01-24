@@ -47,6 +47,22 @@ public class mainMenu extends screen{
     } else {
           selected = false;
     }
+   
+    if (mouseY > 130-textAscent() && mouseY < 130+textDescent()){
+      textSize(16);
+      if (mouseX > 150-textWidth("Start 2 Player")/2 && mouseX < 150+textWidth("Start 2 Player")/2){
+          selected = true;
+          screenBat.x = 150;
+           screenBat.y = 130-5;
+          if (mousePressed){
+            currentScreen = game2Instance;
+          }
+        } else {
+          selected = false;
+        }
+    } else {
+          selected = false;
+    }    
     
     if (paddleTilt > radians(-45+90) && paddleTilt < radians(45+90)){
       if (clockwise)
@@ -76,6 +92,9 @@ public class mainMenu extends screen{
     
     textSize(16);
     text("Quit", 150, 115);
+    
+    textSize(16);
+    text("2 Player", 150, 130);
     
     //paddle inverts colors REFECTOR at some point
     loadPixels();
@@ -111,8 +130,8 @@ public class game extends screen{
   ArrayList<gameObject> objects;
   
   public ball newBall;
-  bat playerBat, aiBat;
-  controller player, ai;
+  bat playerBat, aiBat, player2Bat;
+  controller player, ai, player2;
   
   public game(){
     objects = new ArrayList<gameObject>();
@@ -123,15 +142,22 @@ public class game extends screen{
     playerBat = new bat(true);
     objects.add(playerBat);
     
+    //player2Bat = new bat(false);
+    //objects.add(player2Bat);
+    
     aiBat = new bat(false);
     objects.add(aiBat);
     
     player = new playerController(playerBat);
     objects.add(player);
     
+    //player2 = new player2Controller(player2Bat);
+    //objects.add(player2);
+    
     ai = new aiController(aiBat, newBall);
     objects.add(ai);
   }
+
   
   public void update(float dt){
     //game logic
@@ -146,7 +172,71 @@ public class game extends screen{
      newBall.velocity.x = -newBall.velocity.x;
      newBall.velocity.y = (newBall.y-aiBat.y)/50;
      newBall.speed += 100; 
+    //} else if (player2Bat.collision(newBall)){
+    // newBall.velocity.x = -newBall.velocity.x;
+    // newBall.velocity.y = (newBall.y-player2Bat.y)/50;
+    // newBall.speed += 100; 
+  }
+}
+  
+  public void draw(){
+    //rendering
+    for (int i = 0; i < objects.size(); i++) {
+      objects.get(i).draw();
+    } 
+  }
+}
+public class game2 extends screen{
+  ArrayList<gameObject> objects;
+  
+  public ball newBall;
+  bat playerBat, aiBat, player2Bat;
+  controller player, ai, player2;
+  
+  public game2(){
+    objects = new ArrayList<gameObject>();
+    
+    newBall = new ball();
+    objects.add(newBall);
+    
+    playerBat = new bat(true);
+    objects.add(playerBat);
+    
+    player2Bat = new bat(false);
+    objects.add(player2Bat);
+    
+    //aiBat = new bat(false);
+    //objects.add(aiBat);
+    
+    player = new playerController(playerBat);
+    objects.add(player);
+    
+    player2 = new player2Controller(player2Bat);
+    objects.add(player2);
+    
+    //ai = new aiController(aiBat, newBall);
+    //objects.add(ai);
+  }
+
+  
+  public void update(float dt){
+    //game logic
+    for (int i = 0; i < objects.size(); i++) {
+      objects.get(i).update(dt);
     }
+    if (playerBat.collision(newBall)){
+     newBall.velocity.x = -newBall.velocity.x;
+     newBall.velocity.y = (newBall.y-playerBat.y)/50;
+     newBall.speed += 100; 
+    //} else if (aiBat.collision(newBall)){
+    // newBall.velocity.x = -newBall.velocity.x;
+    // newBall.velocity.y = (newBall.y-aiBat.y)/50;
+    // newBall.speed += 100; 
+    } else if (player2Bat.collision(newBall)){
+     newBall.velocity.x = -newBall.velocity.x;
+     newBall.velocity.y = (newBall.y-player2Bat.y)/50;
+     newBall.speed += 100; 
+  }
   }
   
   public void draw(){
