@@ -1,6 +1,11 @@
 //import sound libary
 import processing.sound.*;
 SoundFile file;
+SoundFile file2;
+SoundFile file3;
+SoundFile file4;
+SoundFile file5;
+
 //Pong Clone v0.2
 //by Kasper Kristensen 09-03-2016
 
@@ -23,6 +28,15 @@ void setup() {
   file= new SoundFile(this, "Super Stardust HD lave music Theme.mp3");
   //playing the mp3 file
       file.play();
+      
+      //importing the sound file from the computer
+  file2= new SoundFile(this, "Lose.mp3");
+  
+   //importing the sound file from the computer
+  file3= new SoundFile(this, "Pan.mp3");
+  
+     //importing the sound file from the computer
+  file4= new SoundFile(this, "Light.mp3");
 }
 
 void draw() {
